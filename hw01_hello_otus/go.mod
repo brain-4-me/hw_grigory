@@ -1,4 +1,4 @@
-module github.com/hw_grigory/hw01_hello_otus
+module github.com/brain-4-me/hw_grigory/hw01_hello_otus
 
 go 1.23
 
