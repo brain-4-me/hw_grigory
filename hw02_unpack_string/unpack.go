@@ -19,8 +19,8 @@ func Unpack(input string) (string, error) {
 			skipNextChar = false
 			continue
 		}
-
-		if unicode.IsDigit(char) {
+		switch {
+		case unicode.IsDigit(char):
 			if index == 0 {
 				return "Invalid string", ErrInvalidString
 			}
@@ -41,7 +41,7 @@ func Unpack(input string) (string, error) {
 					newString.WriteString(strings.Repeat(string(stringRune[index-1]), repeats-1))
 				}
 			}
-		} else if char == '\\' {
+		case char == '\\':
 			if index+1 >= len(stringRune) {
 				return "", ErrInvalidString
 			}
@@ -52,7 +52,7 @@ func Unpack(input string) (string, error) {
 			newString.WriteString(string(nextChar))
 			skipNextChar = true
 			continue
-		} else {
+		default:
 			newString.WriteString(string(char))
 		}
 	}
