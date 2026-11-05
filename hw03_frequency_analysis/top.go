@@ -15,7 +15,24 @@ type pair struct {
 var regexpWord = regexp.MustCompile("[А-Яа-я]")
 
 func Top10(input string) []string {
-	stringSlice := strings.Fields(input)
+	return getTopByCount(10, input)
+}
+
+func Top5(input string) []string {
+	return getTopByCount(5, input)
+}
+
+func clearPunct(word string) string {
+	return strings.Map(func(r rune) rune {
+		if unicode.IsPunct(r) {
+			return -1
+		}
+		return r
+	}, word)
+}
+
+func getTopByCount(count int, text string) []string {
+	stringSlice := strings.Fields(text)
 	wordMap := make(map[string]int)
 
 	for _, word := range stringSlice {
@@ -38,24 +55,14 @@ func Top10(input string) []string {
 		return pairs[i].word < pairs[j].word
 	})
 
-	top10 := 10
-	if len(pairs) < top10 {
-		top10 = len(pairs)
+	if len(pairs) < count {
+		count = len(pairs)
 	}
 
 	// Create result
-	result := make([]string, top10)
-	for i := range top10 {
+	result := make([]string, count)
+	for i := range count {
 		result[i] = pairs[i].word
 	}
 	return result
-}
-
-func clearPunct(word string) string {
-	return strings.Map(func(r rune) rune {
-		if unicode.IsPunct(r) {
-			return -1
-		}
-		return r
-	}, word)
 }
