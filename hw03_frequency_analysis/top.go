@@ -12,7 +12,7 @@ type pair struct {
 	count int
 }
 
-var regexpWord = regexp.MustCompile("[А-Яа-яA-Za-z]")
+var regexpWord = regexp.MustCompile(`\p{L}+`)
 
 func Top10(input string) []string {
 	return getTopByCount(10, input)
