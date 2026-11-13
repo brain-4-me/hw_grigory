@@ -12,7 +12,8 @@ type pair struct {
 	count int
 }
 
-var regexpWord = regexp.MustCompile(`\p{L}+`)
+// Regexp for matching words and emojis with zero-width joiner and variation selectors.
+var regexpWord = regexp.MustCompile(`(?:[\p{L}\p{So}\p{Sk}]|\x{200D}|\x{FE0F}|\x{FE0E}|[\x{1F3FB}-\x{1F3FF}])+`)
 
 func Top10(input string) []string {
 	return getTopByCount(10, input)

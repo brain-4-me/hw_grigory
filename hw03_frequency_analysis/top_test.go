@@ -58,18 +58,21 @@ var text2 = `Известный физик и автор книг-бестсел
 	начал и представляют новейшие свидетельства того, как развивалась наша Вселенная, 
 	– и указания на то, чем она, скорее всего, кончит.`
 
-var englishText = `The renowned physicist and bestselling author Lawrence Krauss offers 
-	a groundbreaking view of how everything around us came into existence at the beginning of time. 
-	Where did the universe come from? What was there before it? What will the future bring? 
-	And finally, why is there something rather than nothing at all? Krauss is one of the few 
-	prominent scientists of our day to have bridged the gap between science and popular culture. 
-	He describes stunningly beautiful experimental observations and mind-bending new theories 
-	that not only demonstrate clearly that something can arise from nothing, but also assert 
-	that something always arises from nothing. The book "A Universe from Nothing: Why There Is
-	Something Rather Than Nothing," equipped with a new preface on the significance of the 
-	discovery of the Higgs boson, is distinguished by Krauss's characteristic dark humor 
-	and extraordinarily clear explanations that carry us back to the very beginning of beginnings 
-	and present the latest evidence of how our universe evolved—and indications of how it will most likely end.`
+var englishText = `The renowned physicist 🔬 and bestselling author Lawrence Krauss 
+	offers 🔬 a groundbreaking view 🔬 of how everything around us came into existence 
+	at the beginning of time ⏳. Where did the universe come from? 🌌 What was there 
+	before it? ❓ What will the future bring? 🔮 And finally, why is there something 
+	rather than nothing at all? 🤔 Krauss is one of the few prominent scientists of 
+	our day to have bridged the gap between science and popular culture 🌍. He 
+	describes stunningly beautiful experimental observations ✨ and mind-bending 
+	new theories 🧠 that not only demonstrate clearly that something can arise 
+	from nothing 🕳️➡️💥, but also assert that something always arises from nothing ♾️. 
+	The book 📖 📖 📖 "A Universe from Nothing: Why There Is Something Rather Than Nothing" 📖 📖, 
+	equipped with a new preface 📖 📖 on the significance of the discovery of the 
+	Higgs boson ⚛️, is distinguished by Krauss's characteristic dark humor 😏 and 
+	extraordinarily clear explanations 💡 that carry us back to the very beginning 
+	of beginnings 🌀 and present the latest evidence of how our universe evolved 🌠—and 
+	indications of how it will most likely end 💫.`
 
 func TestTop10(t *testing.T) {
 	t.Run("no words in empty string", func(t *testing.T) {
@@ -135,6 +138,7 @@ func TestTop10English(t *testing.T) {
 		expected := []string{
 			"the",
 			"of",
+			"📖",
 			"and",
 			"nothing",
 			"from",
@@ -142,7 +146,6 @@ func TestTop10English(t *testing.T) {
 			"something",
 			"that",
 			"a",
-			"how",
 		}
 		require.Equal(t, expected, Top10Eng(englishText))
 	})
